@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('academic_years', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name', 20)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

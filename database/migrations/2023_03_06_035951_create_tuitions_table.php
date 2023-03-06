@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Type::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(AcademicYear::class)->nullable()->constrained()->nullOnDelete();
-            $table->string('name');
+            $table->string('name', 50);
             $table->double('price');
             $table->foreignIdFor(Grade::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
