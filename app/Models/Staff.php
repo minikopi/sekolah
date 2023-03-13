@@ -4,29 +4,22 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\School;
-use App\Models\AcademicYear;
-use App\Models\StudentTuition;
+use App\Models\ClassroomStaff;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Student extends Model
+class Staff extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
-    public function student_tuition(): HasMany
+    public function classroom_staff(): HasMany
     {
-        return $this->hasMany(StudentTuition::class);
-    }
-
-    public function academic_year(): HasOne
-    {
-        return $this->hasOne(AcademicYear::class);
+        return $this->hasMany(ClassroomStaff::class);
     }
 
     public function user(): BelongsTo

@@ -2,21 +2,22 @@
 
 namespace App\Models;
 
+use App\Models\Staff;
 use App\Models\School;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class AcademicYear extends Model
+class ClassroomStaff extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
-
-    public function student(): BelongsTo
+    
+    public function staff(): HasMany
     {
-        return $this->belongsTo(Student::class);
+        return $this->hasMany(Staff::class);
     }
     
     public function school(): BelongsTo

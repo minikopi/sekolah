@@ -1,8 +1,7 @@
 <?php
 
+use App\Models\AcademicYear;
 use App\Models\Grade;
-use App\Models\Student;
-use App\Models\TuitionType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,14 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('student_tuitions', function (Blueprint $table) {
+        Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(School::class)->nullable()->constrained()->nullOnDelete();
-            $table->foreignIdFor(Student::class)->nullable()->constrained()->nullOnDelete();
-            $table->foreignIdFor(TuitionType::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(AcademicYear::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Grade::class)->nullable()->constrained()->nullOnDelete();
-            $table->double('price');
-            $table->text('note')->nullable();
+            $table->string('name', 10)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('student_tuitions');
+        Schema::dropIfExists('classrooms');
     }
 };

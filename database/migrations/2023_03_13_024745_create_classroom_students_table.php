@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('classroom_students', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 30)->nullable();
-            $table->boolean('generatable')->nullable();
+            $table->foreignIdFor(School::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(Student::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('classroom_students');
     }
 };

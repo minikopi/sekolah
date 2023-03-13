@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('academic_years', function (Blueprint $table) {
+        Schema::create('tuition_types', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(School::class)->nullable()->constrained()->nullOnDelete();
-            $table->string('name', 20)->nullable();
+            $table->string('name', 30)->nullable();
+            $table->boolean('generatable')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('academic_year');
+        Schema::dropIfExists('types');
     }
 };

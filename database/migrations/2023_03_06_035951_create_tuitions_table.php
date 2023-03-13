@@ -2,7 +2,7 @@
 
 use App\Models\AcademicYear;
 use App\Models\Grade;
-use App\Models\Type;
+use App\Models\TuitionType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,11 +16,12 @@ return new class extends Migration
     {
         Schema::create('tuitions', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Type::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(School::class)->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(TuitionType::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(AcademicYear::class)->nullable()->constrained()->nullOnDelete();
-            $table->string('name', 50);
-            $table->double('price');
             $table->foreignIdFor(Grade::class)->nullable()->constrained()->nullOnDelete();
+            $table->string('period', 20)->nullable();
+            $table->double('price');
             $table->timestamps();
             $table->softDeletes();
         });

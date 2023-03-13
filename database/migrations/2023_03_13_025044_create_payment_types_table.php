@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('academic_years', function (Blueprint $table) {
+        Schema::create('payment_types', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(School::class)->nullable()->constrained()->nullOnDelete();
             $table->string('name', 20)->nullable();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('academic_year');
+        Schema::dropIfExists('payment_types');
     }
 };

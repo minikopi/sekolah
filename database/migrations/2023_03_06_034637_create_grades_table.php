@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(School::class)->nullable()->constrained()->nullOnDelete();
             $table->string('name', 5)->nullable();
             $table->timestamps();
             $table->softDeletes();
