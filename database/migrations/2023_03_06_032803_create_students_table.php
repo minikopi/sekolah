@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('name', 50)->nullable();
             $table->string('gender', 20)->nullable();
             $table->text('address')->nullable();
-            $table->string('dob', 50)->nullable();
-            $table->string('religion')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('religion', 10)->nullable();
             $table->string('phone_number', 15)->nullable();
             $table->string('nik', 16)->nullable();
             $table->string('nisn', 10)->nullable();

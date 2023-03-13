@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(AcademicYear::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(Grade::class)->nullable()->constrained()->nullOnDelete();
             $table->string('period', 20)->nullable();
-            $table->double('price');
+            $table->double('price')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
